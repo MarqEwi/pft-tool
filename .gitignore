@@ -12,3 +12,7 @@ keystore.properties
 *.keystore
 *.jks
 android/app/google-services.json
+
+# Playwright
+test-results/
+playwright-report/
