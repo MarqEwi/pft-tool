@@ -1,8 +1,8 @@
 {
-  "name": "bft-rechner",
+  "name": "pft-tool",
   "version": "1.0.0",
   "private": true,
-  "description": "BFT Rechner – inoffizieller Punkterechner für den Basis-Fitness-Test (Web + spätere Capacitor-App)",
+  "description": "PFT Tool – inoffizieller Punkterechner für den Physical Fitness Test der Bundeswehr (Web + Capacitor-App)",
   "scripts": {
     "sync-www": "node scripts/sync-www.mjs",
     "sync": "npm run sync-www",

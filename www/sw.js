@@ -1,6 +1,6 @@
-/* Service Worker: Offline-Fähigkeit für den BFT Rechner (nur GitHub Pages).
+/* Service Worker: Offline-Fähigkeit für den PFT Tool (nur GitHub Pages).
    Strategie: Netzwerk zuerst (damit Updates ankommen), Cache als Offline-Fallback. */
-const CACHE = "bft-rechner-v1";
+const CACHE = "pft-tool-v1";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest"];
 
 self.addEventListener("install", e => {

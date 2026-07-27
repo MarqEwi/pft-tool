@@ -1,18 +1,18 @@
-# BFT Tool – Basis Fitness Test (inoffiziell)
+# PFT Tool – Physical Fitness Test (inoffiziell)
 
-Punkterechner für den **Basis-Fitness-Test (BFT)**: 11×10-m-Sprinttest, Klimmhang und
-1000-m-Lauf (oder Fahrradergometer 3000 m) eingeben – die App berechnet Punkte, Gesamtergebnis
-und Note.
+Punkterechner für den **Physical Fitness Test (PFT)** der Bundeswehr: Pendellauf (4×9 m),
+Sit-ups (40 s), Standweitsprung, Liegestütz (40 s) und 12-Minuten-Lauf eingeben – die App
+berechnet die Punktwerte (0–6 je Testaufgabe) und das Gesamtergebnis.
 
 > **Inoffizielle App** – privates Projekt, kein Angebot der Bundeswehr.
 > Alle Angaben ohne Gewähr; maßgeblich ist die offizielle Wertung.
 
 ## Funktionen
 
-- **Teilnehmer-Modus:** Leistungen eingeben, Punkte/Note live sehen, Verlauf lokal speichern
+- **Teilnehmer-Modus:** Leistungen eingeben, Punkte live sehen, Verlauf lokal speichern
 - **Prüfermodus:** mehrere Teilnehmer erfassen, Ergebnisliste mit bestanden/nicht bestanden,
-  Aufbau- und Durchführungsanleitung für alle drei Stationen, Drucken, Export als PDF/Bild/Text (Premium)
-- **Editionen:** Freie Version (mit Werbe-Platzhalter, max. 5 Teilnehmer) und Premium
+  Aufbau- und Durchführungsanleitung für alle fünf Stationen, Drucken, Export als PDF/Bild/Text (Premium)
+- **Editionen:** Freie Version (mit Werbung, begrenzte Teilnehmerzahl) und Premium
   (2,99 €: werbefrei, unbegrenzt Teilnehmer, Export als PDF/Bild/Text)
 - Helles Design mit Dark Mode, responsiv, Ersteinrichtungs-Dialog
 - Komplett offline-fähig, alle Daten bleiben lokal auf dem Gerät (kein Server, kein Tracking)
@@ -23,27 +23,28 @@ und Note.
 - `npm run sync` kopiert die Web-Dateien nach `www/` (Vorbereitung für die Capacitor-App)
 - Service Worker (`sw.js`) wird nur auf `github.io` registriert, nicht in der App
 - Native Brücke mit Feature-Detection (`window.Capacitor`): Datei-Export und Drucken laufen im
-  Browser über `a.download`/`window.print()`, in der späteren Android-App über
-  Capacitor-Plugins (Filesystem/Share/Printer)
+  Browser über `a.download`/`window.print()`, in der Android-App über Capacitor-Plugins
 
 ## Wertungssystem (Kurzfassung)
 
-| Disziplin | Mindestanforderung (= 100 P) | „gut“ (300 P) | „sehr gut“ (400 P) |
-|---|---|---|---|
-| 11×10-m-Sprinttest | 60,0 s | 48,0 s | 42,0 s |
-| Klimmhang | 5 s | 45 s | 65 s |
-| 1000-m-Lauf / FET 3000 m | 6:30 min | 4:30 min | 3:30 min |
+Der PFT besteht aus 5 Testaufgaben, die nacheinander an einem Tag absolviert werden
+(verbindliche Reihenfolge, Aufgaben 1–4 in der Halle, Aufgabe 5 im Freien):
 
-Frauen erhalten einen Leistungszuschlag von 15 % (Sprint, Ausdauer) bzw. 40 % (Klimmhang).
-Note aus der Punktsumme: ab 300 ausreichend, 600 befriedigend, 900 gut, 1200 sehr gut –
-sofern in jeder Disziplin mindestens 100 Punkte erreicht wurden; zusätzlich als Dezimalnote
-(1200 = 1,0 · 900 = 2,0 · 600 = 3,0 · 300 = 4,0). Alterszuschlag: ab dem vollendeten
-36. Lebensjahr +0,5 % Punkte pro Lebensjahr (abschaltbar).
+| Nr. | Testaufgabe | Messwert |
+|---|---|---|
+| 1 | Pendellauf 4×9 m | Zeit auf 0,1 s (bester von 2 Versuchen) |
+| 2 | Sit-ups (40 s) | korrekt ausgeführte Wiederholungen |
+| 3 | Standweitsprung | Weite in cm (bester von 3 Versuchen) |
+| 4 | Liegestütz (40 s) | korrekt ausgeführte Wiederholungen |
+| 5 | 12-Minuten-Lauf | Strecke in m (Feld, auf 25 m) bzw. Runden (Halle, auf ½ Runde) |
 
-Quellen: bundeswehr.de (Basis-Fitness-Test), Informationsblatt „Sporttest Basis-Fitness-Test“,
-einstellungstest-bundeswehr.de, Wikipedia „Basis-Fitness-Test“.
+Je Testaufgabe gibt es **0–6 Punkte** aus der Wertungstabelle (getrennt nach Geschlecht
+und Altersklassen: bis 24, 25–29, 30–34, 35–39). **Bestanden** ist der Test, wenn in jeder
+Aufgabe mindestens **2 Punkte** und insgesamt mindestens **15 Punkte** (von max. 30) erreicht werden.
+
+Quelle: Sportschule der Bundeswehr, „Durchführungsbestimmungen Physical Fitness Test (PFT)".
 
 ## Web-Version
 
-Die App läuft als Web-Version unter: <https://marqewi.github.io/bft-rechner/>
+Die App läuft als Web-Version unter: <https://marqewi.github.io/pft-tool/>
 (GitHub Pages: Settings → Pages → Deploy from a branch → `main` / root)

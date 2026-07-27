@@ -1,7 +1,7 @@
 {
-  "name": "BFT Tool – Basis Fitness Test",
-  "short_name": "BFT Tool",
-  "description": "Punkterechner für den Basis-Fitness-Test: Sprinttest, Klimmhang und 1000-m-Lauf eingeben, Punkte und Note berechnen.",
+  "name": "PFT Tool – Physical Fitness Test",
+  "short_name": "PFT Tool",
+  "description": "Punkterechner für den Physical Fitness Test (PFT) der Bundeswehr: Pendellauf, Sit-ups, Standweitsprung, Liegestütz und 12-Minuten-Lauf eingeben, Punkte berechnen.",
   "lang": "de",
   "start_url": "./",
   "scope": "./",
