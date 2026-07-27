@@ -23,11 +23,10 @@
 
         </activity>
 
-        <!-- AdMob-App-ID: aktuell Google-TEST-App-ID. Vor Release durch die echte
-             App-ID der neuen PFT-Tool-App im AdMob-Konto ersetzen (NICHT die BFT-ID!). -->
+        <!-- Echte AdMob-App-ID der PFT-Tool-App (MERCwerk-Konto). -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-7311552668399418~5188758784" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
