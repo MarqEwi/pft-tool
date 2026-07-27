@@ -4,13 +4,16 @@ Eigenständige Texte, bewusst anders aufgebaut und formuliert als beim BFT Tool,
 damit Google die App nicht als „wiederholten Inhalt" einstuft. Vor dem Einreichen
 in der Play Console einfügen und bei Bedarf anpassen.
 
-## App-Name (max. 30 Zeichen)
+## App-Name (max. 30 Zeichen) – FESTGELEGT
 
 ```
-PFT Tool – Physical Fitness Test
+PFT – Physical Fitness Test
 ```
 
-Falls zu lang angezeigt (32 Zeichen): `PFT Tool – Fitness Test` oder `PFT Tool`.
+(27 Zeichen – der volle Suchbegriff im Titel. „PFT Tool – Physical Fitness Test"
+hätte 32 Zeichen und überschreitet das Play-Limit von 30. Der Launcher-Name
+unter dem App-Icon bleibt davon unberührt „PFT Tool", Branding-konsistent
+zum BFT Tool.)
 
 ## Kurzbeschreibung (max. 80 Zeichen)
 
