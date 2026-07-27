@@ -23,6 +23,15 @@ test("App lädt ohne Konsolenfehler und berechnet den PFT korrekt", async ({ pag
   await expect(page.locator("#t-r-total")).toHaveText("16 / 30");
   await expect(page.locator("#t-r-grade")).toHaveText("bestanden");
 
+  // Ausklappbare Bestehensgrenzen/Bestwerte für die aktive Altersklasse
+  await expect(page.locator("#t-limits-sum")).toContainText("Männer · Altersklasse bis 24");
+  await page.click("#t-limits-sum");
+  await expect(page.locator("#t-limits-body")).toContainText("15 von 30");
+  await expect(page.locator("#t-limits-body")).toContainText("≤ 8,5 s"); // Pendellauf Bestwert
+  await expect(page.locator("#t-limits-body")).toContainText("≥ 40");    // Sit-ups Bestwert
+  await expect(page.locator("#t-limits-body")).toContainText("≥ 25");    // Sit-ups Minimum (2 P)
+  await page.click("#t-limits-sum");
+
   // Eine Aufgabe unter 2 Punkten => nicht bestanden trotz hoher Gesamtpunkte
   await page.fill("#t-pendel", "10,4");
   await page.fill("#t-situp", "40");
