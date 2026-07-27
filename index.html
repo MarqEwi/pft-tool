@@ -123,6 +123,8 @@
   input:focus,select:focus{outline:2px solid var(--accent2);outline-offset:1px}
   input[type=date]{color-scheme:light dark;position:relative;font-variant-numeric:tabular-nums}
   input[type=date]::-webkit-calendar-picker-indicator{opacity:.65;cursor:pointer;filter:saturate(0)}
+  .limit-tab td,.limit-tab th{padding-left:6px;padding-right:6px;white-space:nowrap}
+  .limit-tab .th-sub{font-weight:400;font-size:.72rem;color:var(--text2)}
   .subdetails{margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
   .subdetails>summary{cursor:pointer;list-style:none;font-weight:600;font-size:.84rem;color:var(--accent2);padding:4px 0}
   .subdetails>summary::-webkit-details-marker{display:none}
@@ -1512,7 +1514,7 @@ function renderLimits(inp, r){
   ];
   let html = '<p style="margin:6px 0 6px">Bestanden ab <b>' + PFT.MIN_TOTAL + " von " + PFT.MAX_TOTAL
     + " Punkten</b> – und mindestens <b>" + PFT.MIN_DISC + " Punkten je Aufgabe</b>. Bestwert: 6 Punkte je Aufgabe.</p>";
-  html += '<div class="tablewrap"><table><thead><tr><th>Aufgabe</th><th>für 2 P (Minimum)</th><th>für 6 P (Bestwert)</th></tr></thead><tbody>';
+  html += '<div class="tablewrap"><table class="limit-tab"><thead><tr><th>Aufgabe</th><th>2 P<br><span class="th-sub">Minimum</span></th><th>6 P<br><span class="th-sub">Bestwert</span></th></tr></thead><tbody>';
   rows.forEach(([n, min2, max6]) => { html += "<tr><td>" + n + "</td><td>" + min2 + "</td><td>" + max6 + "</td></tr>"; });
   html += "</tbody></table></div>";
   body.innerHTML = html;
