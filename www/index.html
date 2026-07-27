@@ -438,6 +438,10 @@
         <div class="spacer"></div>
         <span class="grade g-ausr" id="t-r-grade" style="visibility:hidden">–</span>
       </div>
+      <details class="subdetails" id="t-limits">
+        <summary id="t-limits-sum">Bestehensgrenze &amp; Bestwerte</summary>
+        <div id="t-limits-body" class="muted" style="font-size:.84rem"></div>
+      </details>
       <div id="t-r-failhint" class="hint-fail" style="display:none"></div>
       <div class="btn-row">
         <button class="btn" id="t-save" disabled><svg class="ic" aria-hidden="true"><use href="#i-down"/></svg> Im Verlauf speichern</button>
@@ -1474,8 +1478,44 @@ function tRender(){
   }
   $("t-r-failhint").style.display = fails.length ? "block" : "none";
   $("t-r-failhint").textContent = fails.length ? "Nicht bestanden – " + fails.join("; ") + "." : "";
+  renderLimits(inp, r);
   $("t-save").disabled = !r.complete;
   updateSticky();
+}
+
+/* Eingeklappte Übersicht: Bestehensgrenze + Werte für 2 P (Minimum) und
+   6 P (Bestwert) je Aufgabe, passend zu Wertungsgruppe und Altersklasse. */
+function renderLimits(inp, r){
+  const sum = $("t-limits-sum"), body = $("t-limits-body");
+  if (r.ageIdx == null){
+    sum.textContent = "Bestehensgrenze & Bestwerte";
+    body.innerHTML = '<p style="margin:6px 0 2px">Bestanden ab <b>' + PFT.MIN_TOTAL + " von " + PFT.MAX_TOTAL
+      + " Punkten</b> – und mindestens <b>" + PFT.MIN_DISC + " Punkten je Aufgabe</b>.<br>"
+      + "Geburtsjahr eingeben, um die Grenzwerte deiner Altersklasse zu sehen.</p>";
+    return;
+  }
+  const sex = inp.sex === "w" ? "w" : "m";
+  sum.textContent = "Bestehensgrenze & Bestwerte · " + (sex === "w" ? "Frauen" : "Männer") + " · Altersklasse " + PFT.AGE_LABELS[r.ageIdx];
+  const grenze = (discKey, p, unit) => {
+    const t = PFT.TAB[discKey];
+    const v = String(t[sex][r.ageIdx][p - 1]).replace(".", ",");
+    return (t.dir === "runter" ? "≤ " : "≥ ") + v + (unit ? " " + unit : "");
+  };
+  const laufKey = inp.laufType === "halle" ? "lauf_halle" : "lauf_feld";
+  const laufUnitTxt = inp.laufType === "halle" ? "Rd." : "m";
+  const rows = [
+    ["Pendellauf", grenze("pendel", 2, "s"), grenze("pendel", 6, "s")],
+    ["Sit-ups", grenze("situp", 2, ""), grenze("situp", 6, "")],
+    ["Standweitsprung", grenze("sprung", 2, "cm"), grenze("sprung", 6, "cm")],
+    ["Liegestütz", grenze("liegest", 2, ""), grenze("liegest", 6, "")],
+    ["12-min-Lauf (" + (inp.laufType === "halle" ? "Halle" : "Feld") + ")", grenze(laufKey, 2, laufUnitTxt), grenze(laufKey, 6, laufUnitTxt)]
+  ];
+  let html = '<p style="margin:6px 0 6px">Bestanden ab <b>' + PFT.MIN_TOTAL + " von " + PFT.MAX_TOTAL
+    + " Punkten</b> – und mindestens <b>" + PFT.MIN_DISC + " Punkten je Aufgabe</b>. Bestwert: 6 Punkte je Aufgabe.</p>";
+  html += '<div class="tablewrap"><table><thead><tr><th>Aufgabe</th><th>für 2 P (Minimum)</th><th>für 6 P (Bestwert)</th></tr></thead><tbody>';
+  rows.forEach(([n, min2, max6]) => { html += "<tr><td>" + n + "</td><td>" + min2 + "</td><td>" + max6 + "</td></tr>"; });
+  html += "</tbody></table></div>";
+  body.innerHTML = html;
 }
 ["t-age", "t-pendel", "t-situp", "t-sprung", "t-liegest", "t-lauf"].forEach(id => $(id).addEventListener("input", tRender));
 segInit("t-sex", tRender);
