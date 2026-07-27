@@ -1,0 +1,9 @@
+{
+	"appId": "de.mercwerk.bfttool",
+	"appName": "BFT Tool",
+	"webDir": "www",
+	"server": {
+		"androidScheme": "https"
+	},
+	"android": {}
+}

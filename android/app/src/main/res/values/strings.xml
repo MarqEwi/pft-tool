@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BFT Tool</string>
+    <string name="title_activity_main">BFT Tool</string>
+    <string name="package_name">de.mercwerk.bfttool</string>
+    <string name="custom_url_scheme">de.mercwerk.bfttool</string>
+</resources>
