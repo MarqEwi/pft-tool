@@ -28,7 +28,7 @@ test("App lädt ohne Konsolenfehler und berechnet den PFT korrekt", async ({ pag
   await page.click("#t-limits-sum");
   await expect(page.locator("#t-limits-body")).toContainText("15 von 30");
   await expect(page.locator("#t-limits-body")).toContainText("≤ 8,5 s"); // Pendellauf Bestwert
-  await expect(page.locator("#t-limits-body")).toContainText("≥ 40");    // Sit-ups Bestwert
+  await expect(page.locator("#t-limits-body")).toContainText("≥ 40");    // Sit-ups Bestwert (6 P)
   await expect(page.locator("#t-limits-body")).toContainText("≥ 25");    // Sit-ups Minimum (2 P)
   await page.click("#t-limits-sum");
 
